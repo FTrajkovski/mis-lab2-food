@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mis_lab2_201087/screens/favorites_screen.dart';
+import 'package:mis_lab2_201087/screens/profile.dart';
 import '../models/category.dart';
 import '../services/api_categories_service.dart';
 import '../services/api_meal_details_service.dart';
@@ -48,6 +50,24 @@ class _CategoriesScreenState extends State<CategoriesScreen> {
       appBar: AppBar(
         title: Text(widget.title),
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        actions: [
+          IconButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => ProfilePage(),
+              ),
+            ),
+            icon: Icon(Icons.person_outline, color: Colors.red.shade700),
+          ),
+          IconButton(
+            onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(
+                builder: (BuildContext context) => FavoritesScreen(),
+              ),
+            ),
+            icon: Icon(Icons.favorite, color: Colors.red.shade700),
+          ),
+        ],
       ),
       body: _isLoading
           ? const Center(child: CircularProgressIndicator())
